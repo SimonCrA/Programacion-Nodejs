@@ -57,3 +57,15 @@ class Student extends Person {
         
     }
 }
+
+
+let firstName = 'Simon';
+let lastName = 'Clemente';
+let id = 23456679;
+let testScores = [100,80];
+
+
+let s = new Student(firstName, lastName, id, testScores)
+s.printPerson()
+s.calculate()
+console.log('Grade: ' + s.calculate());
