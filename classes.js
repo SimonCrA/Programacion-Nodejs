@@ -114,3 +114,24 @@ class Dog extends Animal {
 
 let dog = new Dog('Mitzie');
 dog.speak()//output:Mitzie barks.
+
+//inheritance practice
+class Rectangle {
+    constructor(w,h){
+        this.w = w;
+        this.h = h;
+    }
+}
+
+Rectangle.prototype.area = () => {
+    return this.w*this.h;
+}
+
+
+class Square extends Rectangle {
+    constructor(l){
+        super(l);
+        this.w = l;
+        this.h = l;
+    }
+}
