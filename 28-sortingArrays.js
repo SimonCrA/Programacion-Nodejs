@@ -2,6 +2,18 @@ let swap = (num1, num2) => {
     let temp = num1;
     num1 = num2;
     num2 = temp;
+/*
+ * other way to reorder this two numbers adding and substracting
+ *   num1 = num1+num2;
+ *   num2 = num1-num2;
+ *   num1 = num1-num2;
+ * 
+ * Another one, in one line (yep, i know is crazy)
+ *    num2 = num1+(num1=num2)-num2;
+ * with float numbers
+ * num2 = num1 + (num1=num2, 0)
+*/
+
     return [num1,num2];
 }
 

@@ -1,0 +1,9 @@
+.group {
+    width: 75%
+}
+
+.group > .btn {
+    width: 30%;
+    height: 48px;
+    font-size: 24px;
+}
