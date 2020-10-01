@@ -73,8 +73,24 @@ class BinarySearchTree {
         return found;
     }
 
-    height(){
-       return this.root; 
+    getBST() {
+        return this.root;
+    }
+
+    height(tree){
+        let leftDepth = 0;
+        let rightDepth = 0;
+        if (tree === null) {
+            return 0;
+        }else {
+            if(tree.left !== null){
+            leftDepth = this.height(tree.left)+1;
+            }
+            if (tree.right !== null) {
+                rightDepth = this.height(tree.right)+1;
+            }
+            return Math.max(leftDepth,rightDepth); 
+        }
     }
 }
 
@@ -86,10 +102,11 @@ console.log(mybst.insert(3));
 console.log(mybst.insert(8));
 console.log(mybst.insert(2));
 console.log(mybst.insert(7));
-console.log(mybst.find(3));
-console.log(mybst.find(8));
-console.log(mybst.find(2));
-console.log(mybst.find(7));
+// console.log(mybst.find(3));
+// console.log(mybst.find(8));
+// console.log(mybst.find(2));
+// console.log(mybst.find(7));
 console.log('Display height from here');
-console.log(mybst.height());
+let bst = mybst.getBST();
+console.log(mybst.height(bst));
 
