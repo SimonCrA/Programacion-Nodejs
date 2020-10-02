@@ -35,7 +35,6 @@ function BinarySearchTree() {
     // Start of function levelOrder
     this.levelOrder = function(root) {
 
-        let queue = new Queue();
         let strOut = ''
         if(root === null){
             return 0
