@@ -7,6 +7,8 @@ btn5.onclick=function() {
     console.log('presionado el boton 5')
     nums.unshift(nums.pop());
     for (i=0; i<=7; i++) {
-        document.getElementById("btn"+ids[i]).innerHTML=nums[i];
+        let newBtn ="btn" +ids[i];
+        document.getElementById(newBtn).innerHTML=nums[i];
     }
 }
+

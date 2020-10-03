@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>binary Calculator</title>
+    <style>
+        body {
+            width: 30%;
+        }
+
+        #res {
+            background-color: lightgray;
+            border: solid;
+            height: 48px;
+            font-size: 20px;
+        }
+
+        .buttonContainer {
+            margin: 2px;
+            /* background-color: lightgray;
+            width: 100% */
+        }
+
+        .buttonContainer > .buttonClass {
+            width: 25%;
+            height: 36px;
+            font-size: 18px;
+            margin: 0px;
+            float: left;
+            text-align: center;
+            cursor: pointer;
+        }
+        .buttonContainer > .nums {
+            background-color: lightgreen;
+            color: brown;
+        }
+        .buttonContainer > .actions {
+            background-color: darkgreen;
+            color: white;
+        }
+        .buttonContainer > .operations {
+            background-color: black;
+            color: red;
+        }
+        
+
+    </style>
+</head>
+<body>
+    
+    <div id="res"></div>
+    <div id="btns" class="buttonContainer">
+        <div id="btn0" class="buttonClass nums">0</div>
+        <div id="btn1" class="buttonClass nums">1</div>
+        <div id="btnClr" class="buttonClass actions">C</div>
+        <div id="btnEql" class="buttonClass actions">=</div>
+        <div id="btnSum" class="buttonClass operations">+</div>
+        <div id="btnSub" class="buttonClass operations">-</div>
+        <div id="btnMul" class="buttonClass operations">*</div>
+        <div id="btnDiv" class="buttonClass operations">/</div>
+    </div>
+
+    <script>
+        // var res = document.getElementById('res');
+        var btn0 = document.getElementById('btn0');
+        var btn1 = document.getElementById('btn1');
+        var btnClr = document.getElementById('btnClr');
+        var btnEql = document.getElementById('btnEql');
+        var btnSum = document.getElementById('btnSum');
+        var btnSub = document.getElementById('btnSub');
+        var btnMul = document.getElementById('btnMul');
+        var btnDiv = document.getElementById('btnDiv');
+
+
+        function action(e){
+            /* Older IE browsers have a srcElement property,
+                but other browsers have a 'target' property; 
+                Set btn to whichever exists. */
+
+            var btn = e.target || e.srcElement;
+            /* Get the clicked element's innerHTML */
+            var tempId = document.getElementById(btn.id);
+            // console.log(tempId.id);
+            switch (tempId.id) {
+                case 'btn0':
+                    document.getElementById('res').innerHTML += '0'
+                    break;
+                case 'btn1':
+                    document.getElementById('res').innerHTML += '1'
+                    break;
+                case 'btnClr':
+                    document.getElementById('res').innerHTML = ''
+                    break;
+                case 'btnSum':
+                    document.getElementById('res').innerHTML += '+'
+                    break;
+                case 'btnSub':
+                    document.getElementById('res').innerHTML += '-'
+                    break;
+                case 'btnMul':
+                    document.getElementById('res').innerHTML += '*'
+                    break;
+                case 'btnDiv':
+                    document.getElementById('res').innerHTML += '/'
+                    break;
+            }
+        }
+
+        btn0.addEventListener('click',action);
+        btn1.addEventListener('click',action);
+        btnClr.addEventListener('click',action);
+        
+        btnSum.addEventListener('click',action);
+        btnSub.addEventListener('click',action);
+        btnMul.addEventListener('click',action);
+        btnDiv.addEventListener('click',action);
+
+        btnEql.onclick = function() {
+
+            var result = document.getElementById('res').innerHTML;
+
+            // const regex = /[-+\/*]/ //This method will split when it finds a character like those ones
+            // var arrNums = result.split(regex);
+
+            const regex = /([-+\/*])/
+            var arrNums = result.split(regex);
+            var firstNumber = parseInt(arrNums[0],2);
+            var secondNumber = parseInt(arrNums[2],2);
+            var operation = arrNums[1];
+            
+            switch (operation) {
+                case '+':
+                    let resultDecSum = firstNumber + secondNumber;
+                    let resultBinSum = resultDecSum.toString(2);
+                    document.getElementById('res').innerHTML = resultBinSum;
+                    break;
+                case '-':
+                    let resultDecSub = firstNumber - secondNumber;
+                    let resultBinSub = resultDecSub.toString(2);
+                    document.getElementById('res').innerHTML = resultBinSub;
+                    break;
+                case '*':
+                    let resultDecMul = firstNumber * secondNumber;
+                    let resultBinMul = resultDecMul.toString(2);
+                    document.getElementById('res').innerHTML = resultBinMul;
+                    break;
+                case '/':
+                    let resultDecDiv = Math.floor(firstNumber/secondNumber);
+                    let resultBinDiv = resultDecDiv.toString(2);
+                    document.getElementById('res').innerHTML = resultBinDiv;
+                    break;
+            }
+            
+            
+        };
+
+
+    </script>
+</body>
+</html>
